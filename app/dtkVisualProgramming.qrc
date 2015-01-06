@@ -1,0 +1,33 @@
+<RCC>
+  <qresource prefix="dtkVisualProgramming">
+    <file>dtkVisualProgramming.qss</file>
+
+    <file>pixmaps/dtkTagScopeWell.png</file>
+    <file>pixmaps/dtkTagScope-sweep.png</file>
+    <file>pixmaps/dtkTagScope-sweep-pressed.png</file>
+
+    <file>pixmaps/dtkComposerScene-bg.png</file>
+    <file>pixmaps/dtkComposerGraphView-bg.png</file>
+
+    <file>pixmaps/dtkCreatorToolbarButton-big-Active.tif</file>
+    <file>pixmaps/dtkCreatorToolbarButton-big-Inactive.tif</file>
+    <file>pixmaps/dtkCreatorToolbarButton-big-Pressed.tif</file>
+    <file>pixmaps/dtkCreatorToolbarButton-small-Active.tif</file>
+    <file>pixmaps/dtkCreatorToolbarButton-small-Inactive.tif</file>
+    <file>pixmaps/dtkCreatorToolbarButton-small-Pressed.tif</file>
+    <file>pixmaps/dtkCreatorToolbarButton_Step_Active.png</file>
+    <file>pixmaps/dtkCreatorToolbarButton_Step_Inactive.png</file>
+    <file>pixmaps/dtkCreatorToolbarButton_Step_Pressed.png</file>
+    <file>pixmaps/dtkCreatorToolbarButton_Pause_Active.png</file>
+    <file>pixmaps/dtkCreatorToolbarButton_Pause_Inactive.png</file>
+    <file>pixmaps/dtkCreatorToolbarButton_Pause_Pressed.png</file>
+    <file>pixmaps/dtkCreatorToolbarButton_Run_Active.png</file>
+    <file>pixmaps/dtkCreatorToolbarButton_Run_Inactive.png</file>
+    <file>pixmaps/dtkCreatorToolbarButton_Run_Pressed.png</file>
+    <file>pixmaps/dtkCreatorToolbarButton_Stop_Active.png</file>
+    <file>pixmaps/dtkCreatorToolbarButton_Stop_Inactive.png</file>
+    <file>pixmaps/dtkCreatorToolbarButton_Stop_Pressed.png</file>
+    <file>pixmaps/dtkCreatorToolbarButton_Continue_Active.png</file>
+    <file>pixmaps/dtkCreatorToolbarButton_Reset_Active.png</file>
+  </qresource>
+</RCC>

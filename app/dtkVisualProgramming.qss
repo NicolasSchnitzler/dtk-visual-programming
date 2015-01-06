@@ -1,0 +1,420 @@
+/* dtkCreator.qss --- 
+;; 
+;; Author: Julien Wintz
+;; Copyright (C) 2008-2011 - Julien Wintz, Inria.
+;; Created: Thu Mar 15 12:05:17 2012 (+0100)
+;; Version: $Id$
+;; Last-Updated: Wed Nov 28 17:03:56 2012 (+0100)
+;;           By: Julien Wintz
+;;     Update #: 455
+*/
+
+/*Commentary: 
+;; 
+*/
+
+/*Change log:
+;; 
+*/
+
+QFrame#dtkCreatorMainWindowSegmentedButtons QPushButton {
+    font-size: 10px;
+}
+
+QPushButton#dtkCreatorMainWindowSegmentedButtonLeft {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #FCFCFC, stop: 1.0 #a1a1a1);
+    border: 1px solid #424242;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 3px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 3px;
+    min-width: 75px;
+    max-width: 75px;
+    margin: 0px;
+    color: black;
+}
+
+QPushButton#dtkCreatorMainWindowSegmentedButtonLeft:pressed,
+QPushButton#dtkCreatorMainWindowSegmentedButtonLeft:checked {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #686868, stop: 1.0 #939393);
+    color: white;
+}
+
+QPushButton#dtkCreatorMainWindowSegmentedButtonMiddle {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #FCFCFC, stop: 1.0 #a1a1a1);
+    border: 1px solid #424242;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    min-width: 75px;
+    max-width: 75px;
+    margin: 0px;
+    color: black;
+}
+
+QPushButton#dtkCreatorMainWindowSegmentedButtonMiddle:pressed,
+QPushButton#dtkCreatorMainWindowSegmentedButtonMiddle:checked {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #686868, stop: 1.0 #939393);
+    color: white;
+}
+
+QPushButton#dtkCreatorMainWindowSegmentedButtonRight {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #FCFCFC, stop: 1.0 #a1a1a1);
+    border: 1px solid #424242;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 0px;
+    min-width: 75px;
+    max-width: 75px;
+    margin: 0px;
+    color: black;
+}
+
+QPushButton#dtkCreatorMainWindowSegmentedButtonRight:pressed,
+QPushButton#dtkCreatorMainWindowSegmentedButtonRight:checked {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #686868, stop: 1.0 #939393);
+    color: white;
+}
+
+/* **************************************************************
+ * dtkTagCloud
+ * ************************************************************** */
+
+dtkTagScope QLineEdit {
+    border: 1px solid #8c8c8c;
+    border-radius: 10px;
+    padding-left: 10px;
+    font-size: 10px;
+}
+
+dtkTagScope QFrame#dtkTagScopeHeader:active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadada, stop: 1.0 #bcbcbc);
+    border-bottom: 1px solid #6c6c6c;
+}
+
+dtkTagScope QFrame#dtkTagScopeHeader:!active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f5f5f5, stop: 1.0 #dadada);
+    border-bottom: 1px solid #6c6c6c;
+}
+
+dtkTagScope QToolButton {
+    background: none;
+    background-image: url(:dtkCreator/pixmaps/dtkTagScope-sweep.png);
+    border: none;
+}
+
+dtkTagScope QToolButton:pressed {
+    background-image: url(:dtkCreator/pixmaps/dtkTagScope-sweep-pressed.png);
+}
+
+dtkTagScope QFrame#dtkTagScopeWell {
+    background: white url(:dtkCreator/pixmaps/dtkTagScopeWell.png);
+    background-repeat: repeat-xy;
+    border-bottom: 1px solid #919191;
+}
+
+dtkTagCloud:active {
+    background-color: #e7ebf0;
+}
+
+dtkTagCloud:!active {
+    background-color: #ededed;
+}
+
+dtkItemList {
+    background: white url(:dtkCreator/pixmaps/dtkTagScopeWell.png);
+    background-repeat: repeat-xy;
+}
+
+/* **************************************************************
+ * QHeaderView
+ * ************************************************************** */
+
+QHeaderView::section {
+    border: none;
+    padding: 5px;
+    border-bottom: 1px solid #818181;
+}
+
+QHeaderView::section:!last:!only-one {
+    border-right: 1px solid #818181;
+}
+
+QHeaderView::section:active {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadada, stop: 1.0 #bcbcbc);
+}
+
+QHeaderView::section:!active {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f5f5f5, stop: 1.0 #dadada);
+}
+
+/* **************************************************************
+ * dtkComposerSceneView
+ * ************************************************************** */
+
+dtkComposerSceneView {
+    font-size: 10px;
+}
+
+dtkComposerSceneView:active {
+    background-color: #e7ebf0;
+}
+
+dtkComposerSceneView:!active {
+    background-color: #ededed;
+}
+
+/* **************************************************************
+ * dtkComposerSceneNodeEditor
+ * ************************************************************** */
+
+dtkComposerSceneNodeEditor QLabel {
+    font-size: 11px;
+    padding: 5px;
+    padding-left: 3px;
+}
+
+dtkComposerSceneNodeEditor QLineEdit {
+    background: transparent;
+    border: none;
+    font-size: 11px;
+}
+
+dtkComposerSceneNodeEditor QFrame#dtkComposerSceneNodeEditorTitle  {
+    border-bottom: 1px solid #818181;
+}
+
+dtkComposerSceneNodeEditor QFrame#dtkComposerSceneNodeEditorTitle:active  {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadada, stop: 1.0 #bcbcbc);
+}
+
+dtkComposerSceneNodeEditor QFrame#dtkComposerSceneNodeEditorTitle:!active  {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f5f5f5, stop: 1.0 #dadada);
+}
+
+dtkComposerSceneNodeEditor QFrame#dtkComposerSceneNodeEditorButtons  {
+    border-bottom: 1px solid #818181;
+}
+
+dtkComposerSceneNodeEditor QFrame#dtkComposerSceneNodeEditorButtons:active  {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadada, stop: 1.0 #bcbcbc);
+}
+
+dtkComposerSceneNodeEditor QFrame#dtkComposerSceneNodeEditorButtons:!active  {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f5f5f5, stop: 1.0 #dadada);
+}
+
+dtkComposerSceneNodeEditorList {
+    background: white url(:dtkCreator/pixmaps/dtkTagScopeWell.png);
+    background-repeat: repeat-xy;
+    border-bottom: 1px solid #919191;
+}
+
+/* **************************************************************
+ * dtkComposerStackView
+ * ************************************************************** */
+
+dtkComposerStackView QUndoView {
+    font-size: 10px;
+}
+
+dtkComposerStackView QUndoView:active {
+    background-color: #e7ebf0;
+}
+
+dtkComposerStackView QUndoView:!active {
+    background-color: #ededed;
+}
+
+/* **************************************************************
+ * dtkDistributor
+ * ************************************************************** */
+
+dtkDistributor QFrame#dtkDistributorHeader:active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadada, stop: 1.0 #bcbcbc);
+    border-bottom: 1px solid #919191;
+}
+
+dtkDistributor QFrame#dtkDistributorHeader:!active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f5f5f5, stop: 1.0 #dadada);
+    border-bottom: 1px solid #919191;
+}
+
+/* **************************************************************
+ * dtkDistributedControllerHeaderView
+ * ************************************************************** */
+
+dtkDistributedControllerHeaderView {
+    background: white url(:dtkCreator/pixmaps/dtkTagScopeWell.png);
+    background-repeat: repeat-xy;
+    border-bottom: 1px solid #919191;
+}
+
+/* **************************************************************
+ * dtkDistributedControllerTargetView
+ * ************************************************************** */
+
+dtkDistributedControllerTargetView {
+    border-bottom: 1px solid #919191;
+    font-size: 10px;
+}
+
+dtkDistributedControllerTargetView:active {
+    background-color: #e7ebf0;
+}
+
+dtkDistributedControllerTargetView:!active {
+    background-color: #ededed;
+}
+
+/* **************************************************************
+ * dtkDistributedControllerStatusView
+ * ************************************************************** */
+
+dtkDistributedControllerStatusView {
+    border-bottom: 1px solid #919191;
+    font-size: 10px;
+}
+
+dtkDistributedControllerStatusView:active {
+    background-color: #e7ebf0;
+}
+
+dtkDistributedControllerStatusView:!active {
+    background-color: #ededed;
+}
+
+/* **************************************************************
+ * dtkDistributedControllerJobView
+ * ************************************************************** */
+
+dtkDistributedControllerJobView {
+    border-bottom: 1px solid #919191;
+    font-size: 10px;
+}
+
+dtkDistributedControllerJobView:active {
+    background-color: #e7ebf0;
+}
+
+dtkDistributedControllerJobView:!active {
+    background-color: #ededed;
+}
+
+/* **************************************************************
+ * dtkDistributedControllerFilterView
+ * ************************************************************** */
+
+dtkDistributedControllerFilterView {
+    border-bottom: 1px solid #919191;
+    font-size: 10px;
+}
+
+dtkDistributedControllerFilterView:active {
+    background-color: #e7ebf0;
+}
+
+dtkDistributedControllerFilterView:!active {
+    background-color: #ededed;
+}
+
+/* **************************************************************
+ * dtkDistributedControllerSubmitView
+ * ************************************************************** */
+
+/* dtkDistributedControllerSubmitView { */
+/*     border-bottom: 1px solid #919191; */
+/* } */
+
+dtkDistributedControllerSubmitView:active {
+    background-color: #e7ebf0;
+}
+
+dtkDistributedControllerSubmitView:!active {
+    background-color: #ededed;
+}
+
+dtkDistributedControllerSubmitView QLabel {
+    font-size: 10px;
+}
+
+dtkDistributedControllerSubmitView QLabel#dtkDistributedControllerSubmitViewHeader {
+    color: black;
+    font-size: 11px;
+    padding: 5px;
+    padding-left: 3px;
+}
+
+dtkDistributedControllerSubmitView QLabel#dtkDistributedControllerSubmitViewHeader:active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadada, stop: 1.0 #bcbcbc);
+    border-bottom: 1px solid #919191;
+}
+
+dtkDistributedControllerSubmitView QLabel#dtkDistributedControllerSubmitViewHeader:!active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f5f5f5, stop: 1.0 #dadada);
+    border-bottom: 1px solid #919191;
+}
+
+/* **************************************************************
+ * dtkLog
+ * ************************************************************** */
+
+dtkLogViewBar {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadada, stop: 1.0 #bcbcbc);
+    border-bottom: 1px solid #6c6c6c;
+}
+
+dtkLogViewTree {
+    border: none;
+    border-right: 1px solid #6c6c6c;
+}
+
+dtkLogViewTree:active {
+    background-color: #e7ebf0;
+}
+
+dtkLogViewTree:!active {
+    background-color: #ededed;
+}
+
+dtkLogViewList {
+    alternate-background-color: #f3f6fa;
+}
+
+/* **************************************************************
+ * dtkNotificationDisplay
+ * ************************************************************** */
+
+dtkNotificationDisplay QLabel#dtkNotificationDisplayMessage
+{
+    font-size: 11px;
+}
+
+/* **************************************************************
+ * dtkComposerPath
+ * ************************************************************** */
+
+dtkComposerPath {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadada, stop: 1.0 #bcbcbc);
+    border-bottom: 1px solid #6c6c6c;
+}
+
+dtkComposerPath:!active {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f5f5f5, stop: 1.0 #dadada);
+    border-bottom: 1px solid #6c6c6c;
+}
+
+dtkComposerPath QLabel {
+    color : #111111;
+}
+
+/* ***************************************************************
+ * dtkComposerControls
+ ***/
+
+dtkComposerControls QListWidget {
+    background: white url(:dtkCreator/pixmaps/dtkTagScopeWell.png);
+    background-repeat: repeat-xy;
+}
