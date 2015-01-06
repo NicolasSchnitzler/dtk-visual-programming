@@ -17,21 +17,21 @@
  * 
  */
 
-#include "dtkCreatorMainWindow.h"
-#include "dtkCreatorMainWindow_p.h"
+#include "dtkVisualProgrammingMainWindow.h"
+#include "dtkVisualProgrammingMainWindow_p.h"
 
 #import <Cocoa/Cocoa.h>
 
 #if defined(Q_OS_MAC) && (MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_6)
 
-void dtkCreatorMainWindowPrivate::enableFullScreenSupport(void)
+void dtkVisualProgrammingMainWindowPrivate::enableFullScreenSupport(void)
 {
     NSView *nsview = (NSView *)(q->winId());
     NSWindow *nswindow = [nsview window];
     [nswindow setCollectionBehavior:NSWindowCollectionBehaviorFullScreenPrimary];
 }
 
-void dtkCreatorMainWindowPrivate::showFullScreen(void)
+void dtkVisualProgrammingMainWindowPrivate::showFullScreen(void)
 {
     NSView *nsview = (NSView *)(q->winId());
     NSWindow *nswindow = [nsview window];

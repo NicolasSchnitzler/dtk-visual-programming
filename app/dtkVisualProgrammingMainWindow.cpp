@@ -53,7 +53,7 @@
 #endif
 
 #include <dtkLog/dtkLog.h>
-// #include <dtkLog/dtkLogView.h>
+#include <dtkWidgets/dtkWidgetsLogView.h>
 
 #include <dtkGuiSupport/dtkNotification.h>
 #include <dtkGuiSupport/dtkNotificationDisplay.h>
@@ -158,8 +158,8 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     d->graph->setVisible(false);
     d->graph->setBackgroundBrush(QBrush(QPixmap(":dtkVisualProgramming/pixmaps/dtkComposerGraphView-bg.png")));
 
-    // d->log_view = new dtkLogView(this);
-    // d->log_view->setVisible(false);
+    d->log_view = new dtkWidgetsLogView(this);
+    d->log_view->setVisible(false);
 
     d->view_manager = new dtkViewManager;
 #if defined(DTK_BUILD_SUPPORT_PLOT)
@@ -411,7 +411,7 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     QHBoxLayout *b_layout = new QHBoxLayout;
     b_layout->setContentsMargins(0, 0, 0, 0);
     b_layout->setSpacing(0);
-    // b_layout->addWidget(d->log_view);
+    b_layout->addWidget(d->log_view);
 
     QWidget *bottom = new QWidget(this);
     bottom->setLayout(b_layout);
@@ -432,7 +432,7 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     d->setCurrentFile("");
 
     //FIXME
-    // dtkNotify(QString("Discovered %1 plugins").arg(dtkPluginManager::instance()->plugins().count()), 5000);
+    //dtkNotify(QString("Discovered %1 plugins").arg(dtkPluginManager::instance()->plugins().count()), 5000);
 }
 
 dtkVisualProgrammingMainWindow::~dtkVisualProgrammingMainWindow(void)
@@ -637,7 +637,7 @@ void dtkVisualProgrammingMainWindow::switchToCompo(void)
     d->view_manager->setVisible(false);
 
     d->graph->setVisible(false);
-    // d->log_view->setVisible(false);
+    d->log_view->setVisible(false);
 
     d->inner->setSizes(QList<int>() << d->wl << 0 << this->size().width() - d->wl - d->wr << d->wr);
 }
@@ -665,7 +665,7 @@ void dtkVisualProgrammingMainWindow::switchToDstrb(void)
     d->view_manager->setVisible(false);
 
     d->graph->setVisible(false);
-    // d->log_view->setVisible(false);
+    d->log_view->setVisible(false);
 
     d->inner->setSizes(QList<int>() << d->wl << 0 << this->size().width() - d->wl - d->wr << d->wr);
 }
@@ -693,7 +693,7 @@ void dtkVisualProgrammingMainWindow::switchToDebug(void)
     d->view_manager->setVisible(false);
 
     d->graph->setVisible(true);
-    // d->log_view->setVisible(true);
+    d->log_view->setVisible(true);
 
     int w = this->size().width() - d->wl - d->wr;
 
@@ -723,7 +723,7 @@ void dtkVisualProgrammingMainWindow::switchToView(void)
     d->view_manager->setVisible(true);
 
     d->graph->setVisible(false);
-    // d->log_view->setVisible(false);
+    d->log_view->setVisible(false);
 }
 
 void dtkVisualProgrammingMainWindow::showControls(void)

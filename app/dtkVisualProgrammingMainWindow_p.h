@@ -37,7 +37,7 @@ class dtkRecentFilesMenu;
 
 class dtkSplitter;
 
-/* class dtkLogView; */
+class dtkWidgetsLogView;
 
 class dtkViewManager;
 class dtkPlotViewSettings;
@@ -79,8 +79,8 @@ public:
     dtkViewManager *view_manager;
     dtkPlotViewSettings *plot_view_settings;
 
-/* public: */
-/*     dtkLogView *log_view; */
+public:
+    dtkWidgetsLogView *log_view;
 
 public:
     dtkSplitter *inner;
