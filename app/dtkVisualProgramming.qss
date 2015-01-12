@@ -82,49 +82,49 @@ QPushButton#dtkCreatorMainWindowSegmentedButtonRight:checked {
  * dtkTagCloud
  * ************************************************************** */
 
-dtkTagScope QLineEdit {
+dtkWidgetsTagCloudScope QLineEdit {
     border: 1px solid #8c8c8c;
     border-radius: 10px;
     padding-left: 10px;
     font-size: 10px;
 }
 
-dtkTagScope QFrame#dtkTagScopeHeader:active {
+dtkWidgetsTagCloudScope QFrame#dtkWidgetsTagCloudScopeHeader:active {
     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #dadada, stop: 1.0 #bcbcbc);
     border-bottom: 1px solid #6c6c6c;
 }
 
-dtkTagScope QFrame#dtkTagScopeHeader:!active {
+dtkWidgetsTagCloudScope QFrame#dtkWidgetsTagCloudScopeHeader:!active {
     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #f5f5f5, stop: 1.0 #dadada);
     border-bottom: 1px solid #6c6c6c;
 }
 
-dtkTagScope QToolButton {
+dtkWidgetsTagCloudScope QToolButton {
     background: none;
-    background-image: url(:dtkCreator/pixmaps/dtkTagScope-sweep.png);
+    background-image: url(:dtkVisualProgramming/pixmaps/dtkTagScope-sweep.png);
     border: none;
 }
 
-dtkTagScope QToolButton:pressed {
-    background-image: url(:dtkCreator/pixmaps/dtkTagScope-sweep-pressed.png);
+dtkWidgetsTagCloudScope QToolButton:pressed {
+    background-image: url(:dtkVisualProgramming/pixmaps/dtkTagScope-sweep-pressed.png);
 }
 
-dtkTagScope QFrame#dtkTagScopeWell {
-    background: white url(:dtkCreator/pixmaps/dtkTagScopeWell.png);
+dtkWidgetsTagCloudScope QFrame#dtkWidgetsTagCloudScopeWell {
+    background: white url(:dtkVisualProgramming/pixmaps/dtkTagScopeWell.png);
     background-repeat: repeat-xy;
     border-bottom: 1px solid #919191;
 }
 
-dtkTagCloud:active {
+dtkWidgetsTagCloud:active {
     background-color: #e7ebf0;
 }
 
-dtkTagCloud:!active {
+dtkWidgetsTagCloud:!active {
     background-color: #ededed;
 }
 
 dtkItemList {
-    background: white url(:dtkCreator/pixmaps/dtkTagScopeWell.png);
+    background: white url(:dtkVisualProgramming/pixmaps/dtkTagScopeWell.png);
     background-repeat: repeat-xy;
 }
 
@@ -207,7 +207,7 @@ dtkComposerSceneNodeEditor QFrame#dtkComposerSceneNodeEditorButtons:!active  {
 }
 
 dtkComposerSceneNodeEditorList {
-    background: white url(:dtkCreator/pixmaps/dtkTagScopeWell.png);
+    background: white url(:dtkVisualProgramming/pixmaps/dtkTagScopeWell.png);
     background-repeat: repeat-xy;
     border-bottom: 1px solid #919191;
 }
@@ -247,7 +247,7 @@ dtkDistributor QFrame#dtkDistributorHeader:!active {
  * ************************************************************** */
 
 dtkDistributedControllerHeaderView {
-    background: white url(:dtkCreator/pixmaps/dtkTagScopeWell.png);
+    background: white url(:dtkVisualProgramming/pixmaps/dtkTagScopeWell.png);
     background-repeat: repeat-xy;
     border-bottom: 1px solid #919191;
 }
@@ -415,6 +415,6 @@ dtkComposerPath QLabel {
  ***/
 
 dtkComposerControls QListWidget {
-    background: white url(:dtkCreator/pixmaps/dtkTagScopeWell.png);
+    background: white url(:dtkVisualProgramming/pixmaps/dtkTagScopeWell.png);
     background-repeat: repeat-xy;
 }
