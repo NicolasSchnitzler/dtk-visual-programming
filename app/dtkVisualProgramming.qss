@@ -17,11 +17,11 @@
 ;; 
 */
 
-QFrame#dtkCreatorMainWindowSegmentedButtons QPushButton {
+QFrame#dtkVisualProgrammingMainWindowSegmentedButtons QPushButton {
     font-size: 10px;
 }
 
-QPushButton#dtkCreatorMainWindowSegmentedButtonLeft {
+QPushButton#dtkVisualProgrammingMainWindowSegmentedButtonLeft {
     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #FCFCFC, stop: 1.0 #a1a1a1);
     border: 1px solid #424242;
     border-top-right-radius: 0px;
@@ -34,13 +34,13 @@ QPushButton#dtkCreatorMainWindowSegmentedButtonLeft {
     color: black;
 }
 
-QPushButton#dtkCreatorMainWindowSegmentedButtonLeft:pressed,
-QPushButton#dtkCreatorMainWindowSegmentedButtonLeft:checked {
+QPushButton#dtkVisualProgrammingMainWindowSegmentedButtonLeft:pressed,
+QPushButton#dtkVisualProgrammingMainWindowSegmentedButtonLeft:checked {
     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #686868, stop: 1.0 #939393);
     color: white;
 }
 
-QPushButton#dtkCreatorMainWindowSegmentedButtonMiddle {
+QPushButton#dtkVisualProgrammingMainWindowSegmentedButtonMiddle {
     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #FCFCFC, stop: 1.0 #a1a1a1);
     border: 1px solid #424242;
     border-top-right-radius: 0px;
@@ -53,13 +53,13 @@ QPushButton#dtkCreatorMainWindowSegmentedButtonMiddle {
     color: black;
 }
 
-QPushButton#dtkCreatorMainWindowSegmentedButtonMiddle:pressed,
-QPushButton#dtkCreatorMainWindowSegmentedButtonMiddle:checked {
+QPushButton#dtkVisualProgrammingMainWindowSegmentedButtonMiddle:pressed,
+QPushButton#dtkVisualProgrammingMainWindowSegmentedButtonMiddle:checked {
     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #686868, stop: 1.0 #939393);
     color: white;
 }
 
-QPushButton#dtkCreatorMainWindowSegmentedButtonRight {
+QPushButton#dtkVisualProgrammingMainWindowSegmentedButtonRight {
     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #FCFCFC, stop: 1.0 #a1a1a1);
     border: 1px solid #424242;
     border-top-right-radius: 3px;
@@ -72,8 +72,8 @@ QPushButton#dtkCreatorMainWindowSegmentedButtonRight {
     color: black;
 }
 
-QPushButton#dtkCreatorMainWindowSegmentedButtonRight:pressed,
-QPushButton#dtkCreatorMainWindowSegmentedButtonRight:checked {
+QPushButton#dtkVisualProgrammingMainWindowSegmentedButtonRight:pressed,
+QPushButton#dtkVisualProgrammingMainWindowSegmentedButtonRight:checked {
     background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #686868, stop: 1.0 #939393);
     color: white;
 }
