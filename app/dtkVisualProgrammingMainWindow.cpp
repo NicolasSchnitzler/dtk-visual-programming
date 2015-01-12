@@ -255,7 +255,7 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     d->view_button->setObjectName("dtkVisualProgrammingMainWindowSegmentedButtonRight");
     d->view_button->setFixedSize(75, 25);
     d->view_button->setCheckable(true);
-#if defined(DTK_BUILD_PLOT) && defined(DTK_HAVE_PLOT)
+#if defined(DTK_BUILD_SUPPORT_PLOT)
 #else
     d->view_button->setVisible(false);
 #endif
@@ -265,7 +265,7 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     button_group->addButton(d->compo_button);
     button_group->addButton(d->distr_button);
     button_group->addButton(d->debug_button);
-#if defined(DTK_BUILD_PLOT) && defined(DTK_HAVE_PLOT)
+#if defined(DTK_BUILD_SUPPORT_PLOT)
     button_group->addButton(d->view_button);
 #endif
 
@@ -275,7 +275,7 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     buttons_layout->addWidget(d->compo_button);
     buttons_layout->addWidget(d->distr_button);
     buttons_layout->addWidget(d->debug_button);
-#if defined(DTK_BUILD_PLOT) && defined(DTK_HAVE_PLOT)
+#if defined(DTK_BUILD_SUPPORT_PLOT)
     buttons_layout->addWidget(d->view_button);
 #endif
 
@@ -759,7 +759,7 @@ void dtkVisualProgrammingMainWindow::onViewFocused(dtkAbstractView *view)
     if (!view)
         return;
 
-#if defined(DTK_BUILD_PLOT) && defined(DTK_HAVE_PLOT)
+#if defined(DTK_BUILD_SUPPORT_PLOT)
     if(dtkPlotView *v = dynamic_cast<dtkPlotView *>(view)) {
         d->plot_view_settings->setView(v);
         d->view_manager->setCurrentWidget(d->plot_view_settings);
