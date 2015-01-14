@@ -375,7 +375,7 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     connect(d->composition_quit_action, SIGNAL(triggered()), qApp, SLOT(quit()));
 
     connect(d->recent_compositions_menu, SIGNAL(recentFileTriggered(const QString&)), this, SLOT(compositionOpen(const QString&)));
-
+    connect(d->composer->scene(),SIGNAL(selectedNode(dtkComposerSceneNode*)), d->nodes, SLOT(onShowNodeDocumentation(dtkComposerSceneNode*)));
     // -- Layout
 
     dtkSplitter *left = new dtkSplitter(this);
