@@ -1,21 +1,16 @@
-### CMakeLists.txt ---
-##
-## Author: Julien Wintz
-## Copyright (C) 2008 - Julien Wintz, Inria.
-## Created: Mon Aug  3 17:34:51 2009 (+0200)
 ## Version: $Id$
-## Last-Updated: Fri Apr 27 21:31:54 2012 (+0200)
-##           By: Julien Wintz
-##     Update #: 171
+## 
 ######################################################################
-##
-### Commentary:
-##
+## 
+### Commentary: 
+## 
 ######################################################################
-##
-### Change log:
-##
+## 
+### Change Log:
+## 
 ######################################################################
+## 
+### Code:
 
 project(dtkVisualProgramming)
 
@@ -56,6 +51,8 @@ add_executable(${PROJECT_NAME} MACOSX_BUNDLE WIN32
   ${${PROJECT_NAME}_SOURCES}
   ${${PROJECT_NAME}_HEADERS})
 
+target_link_libraries(${PROJECT_NAME}
+  dtkLinearAlgebraSparse)
 
 target_link_libraries(${PROJECT_NAME}
   dtkLog
@@ -97,3 +94,6 @@ install(FILES ${${PROJECT_NAME}_MODULES} DESTINATION modules)
 install(TARGETS ${PROJECT_NAME}
    BUNDLE DESTINATION bin
   RUNTIME DESTINATION bin)
+
+######################################################################
+### CMakeLists.txt ends here

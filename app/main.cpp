@@ -1,25 +1,22 @@
-/* main.cpp --- 
- * 
- * Author: Julien Wintz
- * Copyright (C) 2008 - Julien Wintz, Inria.
- * Created: Mon Aug  3 17:37:15 2009 (+0200)
- * Version: $Id: 52537c458ad30e9cd14529a9777c2bfab4268515 $
- * Last-Updated: ven. oct.  5 17:16:04 2012 (+0200)
- *           By: Nicolas Niclausse
- *     Update #: 92
- */
+// Version: $Id$
+// 
+// 
 
-/* Commentary: 
- * 
- */
+// Commentary: 
+// 
+// 
 
-/* Change log:
- * 
- */
+// Change Log:
+// 
+// 
+
+// Code:
+
 
 #include <dtkLog/dtkLog.h>
 
 #include <dtkCore/dtkCorePluginManager.h>
+#include <dtkLinearAlgebraSparse>
 
 #include "dtkVisualProgrammingMainWindow.h"
 
@@ -49,6 +46,10 @@ int main(int argc, char **argv)
     dtkLogger::instance().attachFile(dtkLogPath(&application));
 
     // dtkCorePluginManager::instance()->initialize();
+    dtkLinearAlgebraSparseSettings linear_algebra_sparse_settings;
+    linear_algebra_sparse_settings.beginGroup("linear-algebra-sparse");
+    dtkLinearAlgebraSparse::pluginManager::initialize(linear_algebra_sparse_settings.value("plugins").toString());
+    linear_algebra_sparse_settings.endGroup();
 
     dtkVisualProgrammingMainWindow mainwindow;
     mainwindow.show();
@@ -60,3 +61,6 @@ int main(int argc, char **argv)
 
     return status;
 }
+
+// 
+// main.cpp ends here
