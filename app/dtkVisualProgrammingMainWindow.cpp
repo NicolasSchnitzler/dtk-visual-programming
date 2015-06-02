@@ -50,8 +50,8 @@
 #include <dtkLog/dtkLog.h>
 #include <dtkWidgets/dtkWidgetsLogView.h>
 
-#include <dtkGuiSupport/dtkNotification.h>
-#include <dtkGuiSupport/dtkNotificationDisplay.h>
+#include <dtkWidgets/dtkNotification.h>
+#include <dtkWidgets/dtkNotificationDisplay.h>
 
 #include <dtkLinearAlgebraSparse>
 
