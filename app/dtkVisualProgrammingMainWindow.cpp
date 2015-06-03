@@ -1,21 +1,16 @@
-/* dtkCreatorMainWindow.cpp ---
- *
- * Author: Julien Wintz
- * Copyright (C) 2008 - Julien Wintz, Inria.
- * Created: Mon Aug  3 17:40:34 2009 (+0200)
- * Version: $Id: 646940f71e5cdbc4bac445e4a3ac27458dd3130f $
- * Last-Updated: Mon Jan 20 14:46:40 2014 (+0100)
- *           By: Selim Kraria
- *     Update #: 1845
- */
+// Version: $Id$
+//
+//
 
-/* Commentary:
- *
- */
+// Commentary:
+//
+//
 
-/* Change log:
- *
- */
+// Change Log:
+//
+//
+
+// Code:
 
 #include "dtkVisualProgrammingMainWindow.h"
 #include "dtkVisualProgrammingMainWindow_p.h"
@@ -55,8 +50,8 @@
 #include <dtkLog/dtkLog.h>
 #include <dtkWidgets/dtkWidgetsLogView.h>
 
-#include <dtkGuiSupport/dtkNotification.h>
-#include <dtkGuiSupport/dtkNotificationDisplay.h>
+#include <dtkWidgets/dtkNotification.h>
+#include <dtkWidgets/dtkNotificationDisplay.h>
 
 #include <QtCore>
 #include <QtWidgets>
@@ -766,3 +761,6 @@ void dtkVisualProgrammingMainWindow::onViewFocused(dtkAbstractView *view)
     }
 #endif
 }
+
+//
+// dtkVisualProgrammingMainWindow.cpp ends here
