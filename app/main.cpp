@@ -29,21 +29,16 @@ int main(int argc, char **argv)
     // unset QT_PLUGIN_PATH, otherwise, kde plugins can change the qmetatype ids
     setenv("QT_PLUGIN_PATH", "", 1);
 #endif
-    QApplication application(argc, argv);
-    application.setApplicationName("dtkVisualProgramming");
-    application.setOrganizationName("inria");
-    application.setOrganizationDomain("fr");
-    application.setApplicationVersion("0.9.9");
+    dtkApplication *application = dtkApplication::create(argc, argv);
+    application->setApplicationName("dtkVisualProgramming");
+    application->setOrganizationName("inria");
+    application->setOrganizationDomain("fr");
+    application->setApplicationVersion("0.9.9");
 
-    QSettings settings("inria", "dtk");
-    settings.beginGroup("VisualProgramming");
+    QCommandLineParser *parser = application->parser();
+    parser->setApplicationDescription("DTK visual programming.");
 
-    if (settings.contains("log_level"))
-        dtkLogger::instance().setLevel(settings.value("log_level").toString());
-    else
-        dtkLogger::instance().setLevel(dtkLog::Trace);
-
-    dtkLogger::instance().attachFile(dtkLogPath(&application));
+    application->initialize();
 
     // dtkCorePluginManager::instance()->initialize();
     dtkLinearAlgebraSparseSettings linear_algebra_sparse_settings;
@@ -55,7 +50,7 @@ int main(int argc, char **argv)
     mainwindow.show();
     mainwindow.raise();
 
-    int status = application.exec();
+    int status = application->exec();
 
     // dtkCorePluginManager::instance()->uninitialize();
 
