@@ -34,12 +34,12 @@
 #include <dtkComposer/dtkComposerStack.h>
 #include <dtkComposer/dtkComposerStackView.h>
 #include <dtkComposer/dtkComposerView.h>
+#include <dtkComposer/dtkComposerViewManager.h>
 
 #include <dtkGuiSupport/dtkScreenMenu.h>
 #include <dtkGuiSupport/dtkRecentFilesMenu.h>
 #include <dtkGuiSupport/dtkSpacer.h>
 #include <dtkGuiSupport/dtkSplitter.h>
-#include <dtkGuiSupport/dtkViewManager.h>
 
 #include <dtkCore/dtkCore.h>
 #include <dtkCore/dtkCorePluginManager.h>
@@ -50,12 +50,12 @@
 #endif
 
 #include <dtkLog/dtkLog.h>
-#include <dtkWidgets/dtkWidgetsLogView.h>
 
+#include <dtkWidgets/dtkWidgetsLogView.h>
 #include <dtkWidgets/dtkNotification.h>
 #include <dtkWidgets/dtkNotificationDisplay.h>
 
-#include <dtkLinearAlgebraSparse>
+// #include <dtkLinearAlgebraSparse>
 
 #include <QtCore>
 #include <QtWidgets>
@@ -131,8 +131,8 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     d->composer->view()->setBackgroundBrush(QBrush(QPixmap(":dtkVisualProgramming/pixmaps/dtkComposerScene-bg.png")));
     d->composer->view()->setCacheMode(QGraphicsView::CacheBackground);
 
-    QScopedPointer<dtkComposerNodeFactoryExtension> extension(new dtkLinearAlgebraSparseComposerFactoryExtension);
-    d->composer->factory()->extend(extension.data());
+    // QScopedPointer<dtkComposerNodeFactoryExtension> extension(new dtkLinearAlgebraSparseComposerFactoryExtension);
+    // d->composer->factory()->extend(extension.data());
 
     d->controls = NULL;
 
@@ -163,7 +163,7 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     d->log_view = new dtkWidgetsLogView(this);
     d->log_view->setVisible(false);
 
-    d->view_manager = new dtkViewManager;
+    d->view_manager = new dtkComposerViewManager;
 #if defined(DTK_BUILD_SUPPORT_PLOT)
     d->plot_view_settings = new dtkPlotViewSettings(d->view_manager);
     d->view_manager->addWidget(d->plot_view_settings);
@@ -359,7 +359,7 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
 
     connect(showControlsAction, SIGNAL(triggered()), this, SLOT(showControls()));
 
-    connect(d->view_manager, SIGNAL(focused(dtkAbstractView *)), this, SLOT(onViewFocused(dtkAbstractView *)));
+    // connect(d->view_manager, SIGNAL(focused(dtkAbstractView *)), this, SLOT(onViewFocused(dtkAbstractView *)));
 
     connect(d->compo_button, SIGNAL(pressed()), this, SLOT(switchToCompo()));
     connect(d->distr_button, SIGNAL(pressed()), this, SLOT(switchToDstrb()));

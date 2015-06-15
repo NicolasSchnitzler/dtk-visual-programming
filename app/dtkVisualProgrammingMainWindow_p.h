@@ -1,5 +1,5 @@
-/* dtkVisualProgrammingMainWindow_p.h --- 
- * 
+/* dtkVisualProgrammingMainWindow_p.h ---
+ *
  * Author: Julien Wintz
  * Copyright (C) 2008-2011 - Julien Wintz, Inria.
  * Created: Wed Feb  1 12:37:28 2012 (+0100)
@@ -9,12 +9,12 @@
  *     Update #: 154
  */
 
-/* Commentary: 
- * 
+/* Commentary:
+ *
  */
 
 /* Change log:
- * 
+ *
  */
 
 #pragma once
@@ -39,7 +39,7 @@ class dtkSplitter;
 
 class dtkWidgetsLogView;
 
-class dtkViewManager;
+class dtkComposerViewManager;
 class dtkPlotViewSettings;
 
 class dtkVisualProgrammingMainWindow;
@@ -76,7 +76,7 @@ public:
     dtkDistributor *distributor;
 
 public:
-    dtkViewManager *view_manager;
+    dtkComposerViewManager *view_manager;
     dtkPlotViewSettings *plot_view_settings;
 
 public:
