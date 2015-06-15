@@ -20,6 +20,7 @@
 // #include <dtkDistributedSupport/dtkDistributor.h>
 
 #include <dtkComposer/dtkComposer.h>
+#include <dtkComposer/dtkComposerNode.h>
 #include <dtkComposer/dtkComposerWidget.h>
 #include <dtkComposer/dtkComposerCompass.h>
 #include <dtkComposer/dtkComposerControls.h>
@@ -35,6 +36,7 @@
 #include <dtkComposer/dtkComposerStackView.h>
 #include <dtkComposer/dtkComposerView.h>
 #include <dtkComposer/dtkComposerViewManager.h>
+#include <dtkComposer/dtkComposerViewController.h>
 
 #include <dtkGuiSupport/dtkScreenMenu.h>
 #include <dtkGuiSupport/dtkRecentFilesMenu.h>
@@ -164,11 +166,13 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     d->log_view->setVisible(false);
 
     d->view_manager = new dtkComposerViewManager;
-#if defined(DTK_BUILD_SUPPORT_PLOT)
-    d->plot_view_settings = new dtkPlotViewSettings(d->view_manager);
-    d->view_manager->addWidget(d->plot_view_settings);
-#endif
+// #if defined(DTK_BUILD_SUPPORT_PLOT)
+//     d->plot_view_settings = new dtkPlotViewSettings(d->view_manager);
+//     d->view_manager->addWidget(d->plot_view_settings);
+// #endif
     d->view_manager->setVisible(false);
+
+    connect(d->composer->scene(), SIGNAL(flagged(dtkComposerNode *)), this, SLOT(onComposerNodeFlagged(dtkComposerNode *)));
 
     d->closing = false;
 
@@ -359,7 +363,7 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
 
     connect(showControlsAction, SIGNAL(triggered()), this, SLOT(showControls()));
 
-    // connect(d->view_manager, SIGNAL(focused(dtkAbstractView *)), this, SLOT(onViewFocused(dtkAbstractView *)));
+    // connect(d->view_manager, SIGNAL(focused(dtkAbstratView *)), this, SLOT(onViewFocused(dtkAbstractView *)));
 
     connect(d->compo_button, SIGNAL(pressed()), this, SLOT(switchToCompo()));
     connect(d->distr_button, SIGNAL(pressed()), this, SLOT(switchToDstrb()));
@@ -756,17 +760,9 @@ void dtkVisualProgrammingMainWindow::closeEvent(QCloseEvent *event)
      }
 }
 
-void dtkVisualProgrammingMainWindow::onViewFocused(dtkAbstractView *view)
+void dtkVisualProgrammingMainWindow::onComposerNodeFlagged(dtkComposerNode *node)
 {
-    if (!view)
-        return;
-
-#if defined(DTK_BUILD_SUPPORT_PLOT)
-    if(dtkPlotView *v = dynamic_cast<dtkPlotView *>(view)) {
-        d->plot_view_settings->setView(v);
-        d->view_manager->setCurrentWidget(d->plot_view_settings);
-    }
-#endif
+    dtkComposerViewController::instance()->insert(node->titleHint(), node->widget());
 }
 
 //

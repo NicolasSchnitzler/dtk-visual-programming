@@ -1,5 +1,5 @@
-/* dtkVisualProgrammingMainWindow.h --- 
- * 
+/* dtkVisualProgrammingMainWindow.h ---
+ *
  * Author: Julien Wintz
  * Copyright (C) 2008 - Julien Wintz, Inria.
  * Created: Mon Aug  3 17:38:47 2009 (+0200)
@@ -9,12 +9,12 @@
  *     Update #: 70
  */
 
-/* Commentary: 
- * 
+/* Commentary:
+ *
  */
 
 /* Change log:
- * 
+ *
  */
 
 #ifndef DTKVISUALPROGRAMMINGMAINWINDOW_H
@@ -24,7 +24,8 @@
 
 #include <QtWidgets>
 
-class dtkAbstractView;
+class dtkComposerNode;
+
 class dtkVisualProgrammingMainWindowPrivate;
 
 class dtkVisualProgrammingMainWindow : public QMainWindow
@@ -56,7 +57,8 @@ protected slots:
 protected slots:
     void showControls(void);
 
-    void onViewFocused(dtkAbstractView *view);
+protected slots:
+    void onComposerNodeFlagged(dtkComposerNode *);
 
 protected:
     void closeEvent(QCloseEvent *event);
