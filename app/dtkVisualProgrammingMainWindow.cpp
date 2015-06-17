@@ -57,7 +57,7 @@
 #include <dtkWidgets/dtkNotification.h>
 #include <dtkWidgets/dtkNotificationDisplay.h>
 
-// #include <dtkLinearAlgebraSparse>
+#include <dtkLinearAlgebraSparse>
 
 #include <QtCore>
 #include <QtWidgets>
@@ -133,8 +133,8 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     d->composer->view()->setBackgroundBrush(QBrush(QPixmap(":dtkVisualProgramming/pixmaps/dtkComposerScene-bg.png")));
     d->composer->view()->setCacheMode(QGraphicsView::CacheBackground);
 
-    // QScopedPointer<dtkComposerNodeFactoryExtension> extension(new dtkLinearAlgebraSparseComposerFactoryExtension);
-    // d->composer->factory()->extend(extension.data());
+    QScopedPointer<dtkComposerNodeFactoryExtension> extension(new dtkLinearAlgebraSparseComposerFactoryExtension);
+    d->composer->factory()->extend(extension.data());
 
     d->controls = NULL;
 
