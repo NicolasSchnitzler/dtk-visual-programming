@@ -16,6 +16,7 @@
 #include <dtkLog/dtkLog.h>
 
 #include <dtkCore/dtkCorePluginManager.h>
+#include <dtkDistributed/dtkDistributedSettings.h>
 #include <dtkLinearAlgebraSparse>
 
 #include "dtkVisualProgrammingMainWindow.h"
@@ -40,11 +41,14 @@ int main(int argc, char **argv)
 
     application->initialize();
 
+    dtkDistributedSettings settings;
+    settings.beginGroup("slave");
+    settings.setValue("path", "dtkComposerEvaluatorSparse");
+    settings.endGroup();
+
+
     // dtkCorePluginManager::instance()->initialize();
-    dtkLinearAlgebraSparseSettings linear_algebra_sparse_settings;
-    linear_algebra_sparse_settings.beginGroup("linear-algebra-sparse");
-    dtkLinearAlgebraSparse::pluginManager::initialize(linear_algebra_sparse_settings.value("plugins").toString());
-    linear_algebra_sparse_settings.endGroup();
+    dtkLinearAlgebraSparse::pluginManager::initialize();
 
     dtkVisualProgrammingMainWindow mainwindow;
     mainwindow.show();
