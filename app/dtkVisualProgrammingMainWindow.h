@@ -24,7 +24,7 @@
 
 #include <QtWidgets>
 
-class dtkComposerNode;
+class dtkComposerSceneNode;
 
 class dtkVisualProgrammingMainWindowPrivate;
 
@@ -58,7 +58,7 @@ protected slots:
     void showControls(void);
 
 protected slots:
-    void onComposerNodeFlagged(dtkComposerNode *);
+    void onComposerNodeFlagged(dtkComposerSceneNode *);
 
 protected:
     void closeEvent(QCloseEvent *event);

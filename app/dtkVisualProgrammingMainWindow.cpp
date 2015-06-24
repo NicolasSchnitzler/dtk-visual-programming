@@ -172,7 +172,7 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
 // #endif
     d->view_manager->setVisible(false);
 
-    connect(d->composer->scene(), SIGNAL(flagged(dtkComposerNode *)), this, SLOT(onComposerNodeFlagged(dtkComposerNode *)));
+    connect(d->composer->scene(), SIGNAL(flagged(dtkComposerSceneNode *)), this, SLOT(onComposerNodeFlagged(dtkComposerSceneNode *)));
 
     d->closing = false;
 
@@ -760,9 +760,9 @@ void dtkVisualProgrammingMainWindow::closeEvent(QCloseEvent *event)
      }
 }
 
-void dtkVisualProgrammingMainWindow::onComposerNodeFlagged(dtkComposerNode *node)
+void dtkVisualProgrammingMainWindow::onComposerNodeFlagged(dtkComposerSceneNode *node)
 {
-    dtkComposerViewController::instance()->insert(node->titleHint(), node->widget());
+    dtkComposerViewController::instance()->insert(node);
 }
 
 //
