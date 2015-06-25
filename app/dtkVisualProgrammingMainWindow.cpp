@@ -261,19 +261,13 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     d->view_button->setObjectName("dtkVisualProgrammingMainWindowSegmentedButtonRight");
     d->view_button->setFixedSize(75, 25);
     d->view_button->setCheckable(true);
-#if defined(DTK_BUILD_SUPPORT_PLOT)
-#else
-    d->view_button->setVisible(false);
-#endif
 
     QButtonGroup *button_group = new QButtonGroup(this);
     button_group->setExclusive(true);
     button_group->addButton(d->compo_button);
     button_group->addButton(d->distr_button);
     button_group->addButton(d->debug_button);
-#if defined(DTK_BUILD_SUPPORT_PLOT)
     button_group->addButton(d->view_button);
-#endif
 
     QHBoxLayout *buttons_layout = new QHBoxLayout(buttons);
     buttons_layout->setMargin(0);
@@ -281,9 +275,7 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     buttons_layout->addWidget(d->compo_button);
     buttons_layout->addWidget(d->distr_button);
     buttons_layout->addWidget(d->debug_button);
-#if defined(DTK_BUILD_SUPPORT_PLOT)
     buttons_layout->addWidget(d->view_button);
-#endif
 
     mainToolBar->addWidget(new dtkSpacer(this));
     mainToolBar->addWidget(new dtkNotificationDisplay(this));
@@ -305,7 +297,6 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     d->composition_menu->addAction(d->composition_insert_action);
     d->composition_menu->addSeparator();
     d->composition_menu->addAction(d->composition_quit_action);
-
 
     d->edit_menu = menu_bar->addMenu("Edit");
     d->edit_menu->addAction(d->composer->view()->searchAction());
