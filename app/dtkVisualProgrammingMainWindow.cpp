@@ -25,6 +25,7 @@
 #include <dtkComposer/dtkComposerCompass.h>
 #include <dtkComposer/dtkComposerControls.h>
 #include <dtkComposer/dtkComposerEvaluator.h>
+#include <dtkComposer/dtkComposerFactory.h>
 #include <dtkComposer/dtkComposerNodeFactoryView.h>
 #include <dtkComposer/dtkComposerGraph.h>
 #include <dtkComposer/dtkComposerGraphView.h>
@@ -58,6 +59,7 @@
 #include <dtkWidgets/dtkNotificationDisplay.h>
 
 #include <dtkLinearAlgebraSparse>
+#include <dtkLinearAlgebraSparseComposerFactoryExtension.h>
 
 #include <QtCore>
 #include <QtWidgets>
