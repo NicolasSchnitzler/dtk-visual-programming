@@ -107,6 +107,9 @@ include_directories(${dtk_INCLUDE_DIRS})
 find_package(dtkLinearAlgebraSparse 0.1.1 REQUIRED)
 include_directories(${dtkLinearAlgebraSparse_INCLUDE_DIRS})
 
+find_package(dtkGeometry 0.1.1 REQUIRED)
+include_directories(${dtkGeometry_INCLUDE_DIRS})
+
 ## #################################################################
 ## Dependencies - internal
 ## #################################################################

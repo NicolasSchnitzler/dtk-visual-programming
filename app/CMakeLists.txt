@@ -1,15 +1,15 @@
 ## Version: $Id$
-## 
+##
 ######################################################################
-## 
-### Commentary: 
-## 
+##
+### Commentary:
+##
 ######################################################################
-## 
+##
 ### Change Log:
-## 
+##
 ######################################################################
-## 
+##
 ### Code:
 
 project(dtkVisualProgramming)
@@ -52,7 +52,8 @@ add_executable(${PROJECT_NAME} MACOSX_BUNDLE WIN32
   ${${PROJECT_NAME}_HEADERS})
 
 target_link_libraries(${PROJECT_NAME}
-  dtkLinearAlgebraSparse)
+  dtkLinearAlgebraSparse
+  dtkGeometry)
 
 target_link_libraries(${PROJECT_NAME}
   dtkLog

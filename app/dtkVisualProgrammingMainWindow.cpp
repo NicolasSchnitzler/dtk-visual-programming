@@ -61,6 +61,8 @@
 #include <dtkLinearAlgebraSparse>
 #include <dtkLinearAlgebraSparseComposerFactoryExtension.h>
 
+#include <dtkGeometry>
+
 #include <QtCore>
 #include <QtWidgets>
 
@@ -137,6 +139,9 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
 
     QScopedPointer<dtkComposerNodeFactoryExtension> extension(new dtkLinearAlgebraSparseComposerFactoryExtension);
     d->composer->factory()->extend(extension.data());
+
+    QScopedPointer<dtkComposerNodeFactoryExtension> geo_ext(new dtkGeometryComposerFactoryExtension);
+    d->composer->factory()->extend(geo_ext.data());
 
     d->controls = NULL;
 

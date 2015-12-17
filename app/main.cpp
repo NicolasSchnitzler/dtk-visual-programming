@@ -1,14 +1,14 @@
 // Version: $Id$
-// 
-// 
+//
+//
 
-// Commentary: 
-// 
-// 
+// Commentary:
+//
+//
 
 // Change Log:
-// 
-// 
+//
+//
 
 // Code:
 
@@ -18,6 +18,7 @@
 #include <dtkCore/dtkCorePluginManager.h>
 #include <dtkDistributed/dtkDistributedSettings.h>
 #include <dtkLinearAlgebraSparse>
+#include <dtkGeometry>
 
 #include "dtkVisualProgrammingMainWindow.h"
 
@@ -50,6 +51,12 @@ int main(int argc, char **argv)
     // dtkCorePluginManager::instance()->initialize();
     dtkLinearAlgebraSparse::pluginManager::initialize();
 
+    dtkGeometrySettings geo_settings;
+    geo_settings.beginGroup("geometry");
+    dtkGeometry::mesher::initialize(geo_settings.value("plugins").toString());
+    geo_settings.endGroup();
+
+
     dtkVisualProgrammingMainWindow mainwindow;
     mainwindow.show();
     mainwindow.raise();
@@ -61,5 +68,5 @@ int main(int argc, char **argv)
     return status;
 }
 
-// 
+//
 // main.cpp ends here
