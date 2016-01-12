@@ -54,6 +54,7 @@ int main(int argc, char **argv)
     dtkGeometrySettings geo_settings;
     geo_settings.beginGroup("geometry");
     dtkGeometry::mesher::initialize(geo_settings.value("plugins").toString());
+    dtkGeometry::meshStatistics::initialize(geo_settings.value("plugins").toString());
     geo_settings.endGroup();
 
 
