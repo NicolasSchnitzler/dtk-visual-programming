@@ -31,6 +31,10 @@ class dtkComposerSceneNodeEditor;
 class dtkComposerSceneView;
 class dtkComposerStackView;
 
+class dtkMonitoringList;
+class dtkMonitoringScene;
+class dtkMonitoringView;
+
 class dtkDistributor;
 
 class dtkRecentFilesMenu;
@@ -73,6 +77,13 @@ public:
     dtkComposerStackView *stack;
 
 public:
+    QWidget *monitoring_widget;
+
+    dtkMonitoringList *monitoring_list;
+    dtkMonitoringScene *monitoring_scene;
+    dtkMonitoringView *monitoring_view;
+
+public:
     dtkDistributor *distributor;
 
 public:
@@ -101,6 +112,7 @@ public:
 
 public:
     QPushButton *compo_button;
+    QPushButton *montr_button;
     QPushButton *distr_button;
     QPushButton *debug_button;
     QPushButton *view_button;

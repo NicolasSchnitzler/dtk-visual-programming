@@ -50,6 +50,7 @@ public slots:
 
 protected slots:
     void switchToCompo(void);
+    void switchToMontr(void);
     void switchToDstrb(void);
     void switchToDebug(void);
     void switchToView(void);

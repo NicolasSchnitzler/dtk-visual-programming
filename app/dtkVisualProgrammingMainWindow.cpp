@@ -12,12 +12,8 @@
 
 // Code:
 
-
-
 #include "dtkVisualProgrammingMainWindow.h"
 #include "dtkVisualProgrammingMainWindow_p.h"
-
-// #include <dtkDistributedSupport/dtkDistributor.h>
 
 #include <dtkComposer/dtkComposer.h>
 #include <dtkComposer/dtkComposerNode.h>
@@ -38,6 +34,10 @@
 #include <dtkComposer/dtkComposerView.h>
 #include <dtkComposer/dtkComposerViewManager.h>
 #include <dtkComposer/dtkComposerViewController.h>
+
+#include <dtkMonitoring/dtkMonitoringList.h>
+#include <dtkMonitoring/dtkMonitoringScene.h>
+#include <dtkMonitoring/dtkMonitoringView.h>
 
 #include <dtkGuiSupport/dtkScreenMenu.h>
 #include <dtkGuiSupport/dtkRecentFilesMenu.h>
@@ -183,6 +183,24 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
 
     d->closing = false;
 
+    // ///////////////////////////////////////////////////////////
+
+    d->monitoring_widget = new QWidget(this);
+    d->monitoring_widget->setVisible(false);
+
+    d->monitoring_list = new dtkMonitoringList(d->monitoring_widget);
+    d->monitoring_list->setFixedWidth(300);
+    d->monitoring_scene = new dtkMonitoringScene(d->monitoring_widget);
+    d->monitoring_view = new dtkMonitoringView(d->monitoring_widget);
+    d->monitoring_view->setScene(d->monitoring_scene);
+
+    QHBoxLayout *layout = new QHBoxLayout(d->monitoring_widget);
+    layout->setSpacing(0);
+    layout->setContentsMargins(0, 0, 0, 0);
+    layout->addWidget(d->monitoring_list);
+    layout->addWidget(d->monitoring_view);
+
+    // ///////////////////////////////////////////////////////
     // -- Actions
 
     d->composition_open_action = new QAction("Open", this);
@@ -207,16 +225,19 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     d->redo_action->setShortcut(QKeySequence::Redo);
 
     QAction *switchToCompoAction = new QAction("Switch to composition perspective", this);
+    QAction *switchToMontrAction = new QAction("Switch to monitoring perspective", this);
     QAction *switchToDstrbAction = new QAction("Switch to distributed perspective", this);
     QAction *switchToDebugAction = new QAction("Switch to debug perspective", this);
     QAction *switchToViewAction = new QAction("Switch to view perspective", this);
 
     switchToCompoAction->setShortcut(Qt::ControlModifier + Qt::AltModifier + Qt::Key_1);
-    switchToDstrbAction->setShortcut(Qt::ControlModifier + Qt::AltModifier + Qt::Key_2);
-    switchToDebugAction->setShortcut(Qt::ControlModifier + Qt::AltModifier + Qt::Key_3);
-    switchToViewAction->setShortcut(Qt::ControlModifier + Qt::AltModifier + Qt::Key_4);
+    switchToMontrAction->setShortcut(Qt::ControlModifier + Qt::AltModifier + Qt::Key_2);
+    switchToDstrbAction->setShortcut(Qt::ControlModifier + Qt::AltModifier + Qt::Key_3);
+    switchToDebugAction->setShortcut(Qt::ControlModifier + Qt::AltModifier + Qt::Key_4);
+    switchToViewAction->setShortcut(Qt::ControlModifier + Qt::AltModifier + Qt::Key_5);
 
     this->addAction(switchToCompoAction);
+    this->addAction(switchToMontrAction);
     this->addAction(switchToDstrbAction);
     this->addAction(switchToDebugAction);
     this->addAction(switchToViewAction);
@@ -254,6 +275,12 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     d->compo_button->setCheckable(true);
     d->compo_button->setChecked(true);
 
+    d->montr_button = new QPushButton("Monitoring", buttons);
+    d->montr_button->setObjectName("dtkVisualProgrammingMainWindowSegmentedButtonMiddle");
+    d->montr_button->setFixedSize(75, 25);
+    d->montr_button->setCheckable(true);
+    d->montr_button->setChecked(false);
+
     d->distr_button = new QPushButton("Distribution", buttons);
     d->distr_button->setObjectName("dtkVisualProgrammingMainWindowSegmentedButtonMiddle");
     d->distr_button->setFixedSize(75, 25);
@@ -272,6 +299,7 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     QButtonGroup *button_group = new QButtonGroup(this);
     button_group->setExclusive(true);
     button_group->addButton(d->compo_button);
+    button_group->addButton(d->montr_button);
     button_group->addButton(d->distr_button);
     button_group->addButton(d->debug_button);
     button_group->addButton(d->view_button);
@@ -280,6 +308,7 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     buttons_layout->setMargin(0);
     buttons_layout->setSpacing(11);
     buttons_layout->addWidget(d->compo_button);
+    buttons_layout->addWidget(d->montr_button);
     buttons_layout->addWidget(d->distr_button);
     buttons_layout->addWidget(d->debug_button);
     buttons_layout->addWidget(d->view_button);
@@ -355,6 +384,7 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     connect(reset_action, SIGNAL(triggered()), d->composer, SLOT(reset()));
 
     connect(switchToCompoAction, SIGNAL(triggered()), this, SLOT(switchToCompo()));
+    connect(switchToMontrAction, SIGNAL(triggered()), this, SLOT(switchToMontr()));
     connect(switchToDstrbAction, SIGNAL(triggered()), this, SLOT(switchToDstrb()));
     connect(switchToDebugAction, SIGNAL(triggered()), this, SLOT(switchToDebug()));
     connect(switchToViewAction, SIGNAL(triggered()), this, SLOT(switchToView()));
@@ -637,6 +667,7 @@ void dtkVisualProgrammingMainWindow::switchToCompo(void)
     d->scene->setVisible(true);
     d->editor->setVisible(true);
     d->stack->setVisible(true);
+    d->monitoring_widget->setVisible(false);
     // d->distributor->setVisible(false);
     d->view_manager->setVisible(false);
 
@@ -645,6 +676,8 @@ void dtkVisualProgrammingMainWindow::switchToCompo(void)
 
     d->inner->setSizes(QList<int>() << d->wl << 0 << this->size().width() - d->wl - d->wr << d->wr);
 }
+
+
 
 void dtkVisualProgrammingMainWindow::switchToDstrb(void)
 {
@@ -665,6 +698,7 @@ void dtkVisualProgrammingMainWindow::switchToDstrb(void)
     d->scene->setVisible(true);
     d->editor->setVisible(true);
     d->stack->setVisible(true);
+    d->monitoring_widget->setVisible(false);
     // d->distributor->setVisible(true);
     d->view_manager->setVisible(false);
 
@@ -693,6 +727,7 @@ void dtkVisualProgrammingMainWindow::switchToDebug(void)
     d->scene->setVisible(false);
     d->editor->setVisible(false);
     d->stack->setVisible(false);
+    d->monitoring_widget->setVisible(false);
     // d->distributor->setVisible(false);
     d->view_manager->setVisible(false);
 
@@ -723,8 +758,35 @@ void dtkVisualProgrammingMainWindow::switchToView(void)
     d->scene->setVisible(false);
     d->editor->setVisible(false);
     d->stack->setVisible(false);
+    d->monitoring_widget->setVisible(false);
     // d->distributor->setVisible(false);
     d->view_manager->setVisible(true);
+
+    d->graph->setVisible(false);
+    d->log_view->setVisible(false);
+}
+
+void dtkVisualProgrammingMainWindow::switchToMontr(void)
+{
+    dtkNotify("Monitoring workspace", 2000);
+
+    d->montr_button->blockSignals(true);
+    d->montr_button->setChecked(true);
+    d->montr_button->blockSignals(false);
+
+    if(!d->wl && !d->wr) {
+        d->wl = d->nodes->size().width();
+        d->wr = d->stack->size().width();
+    }
+
+    d->composer->setVisible(false);
+    d->composer->compass()->setVisible(false);
+    d->nodes->setVisible(false);
+    d->scene->setVisible(false);
+    d->editor->setVisible(false);
+    d->stack->setVisible(false);
+    d->monitoring_widget->setVisible(true);
+    d->view_manager->setVisible(false);
 
     d->graph->setVisible(false);
     d->log_view->setVisible(false);
