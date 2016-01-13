@@ -770,8 +770,6 @@ void dtkVisualProgrammingMainWindow::switchToView(void)
 
 void dtkVisualProgrammingMainWindow::switchToMontr(void)
 {
-    qDebug() << Q_FUNC_INFO;
-
     dtkNotify("Monitoring workspace", 2000);
 
     d->montr_button->blockSignals(true);
