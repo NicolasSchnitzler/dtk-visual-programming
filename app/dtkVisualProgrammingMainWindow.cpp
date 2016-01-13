@@ -394,6 +394,7 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     // connect(d->view_manager, SIGNAL(focused(dtkAbstratView *)), this, SLOT(onViewFocused(dtkAbstractView *)));
 
     connect(d->compo_button, SIGNAL(pressed()), this, SLOT(switchToCompo()));
+    connect(d->montr_button, SIGNAL(pressed()), this, SLOT(switchToMontr()));
     connect(d->distr_button, SIGNAL(pressed()), this, SLOT(switchToDstrb()));
     connect(d->debug_button, SIGNAL(pressed()), this, SLOT(switchToDebug()));
     connect(d->view_button, SIGNAL(pressed()), this, SLOT(switchToView()));
@@ -435,6 +436,7 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     d->inner->addWidget(left);
     d->inner->addWidget(d->graph);
     d->inner->addWidget(d->composer);
+    d->inner->addWidget(d->monitoring_widget);
     d->inner->addWidget(right);
     d->inner->setSizes(QList<int>()
                     << 300
@@ -768,6 +770,8 @@ void dtkVisualProgrammingMainWindow::switchToView(void)
 
 void dtkVisualProgrammingMainWindow::switchToMontr(void)
 {
+    qDebug() << Q_FUNC_INFO;
+
     dtkNotify("Monitoring workspace", 2000);
 
     d->montr_button->blockSignals(true);
