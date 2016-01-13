@@ -48,6 +48,12 @@ if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
   set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/install" CACHE PATH "${PROJECT_NAME} install prefix" FORCE)
 endif(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 
+## #################################################################
+## Generate compilation database
+## #################################################################
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS "ON")
+
 ## ###################################################################
 ## Build setup
 ## ###################################################################
@@ -115,43 +121,12 @@ include_directories(${dtkGeometry_INCLUDE_DIRS})
 ## #################################################################
 
 include_directories(${CMAKE_BINARY_DIR})
-#include_directories(${CMAKE_SOURCE_DIR}/app)
 
 ## ###################################################################
 ## Input
 ## ###################################################################
 
 add_subdirectory(app)
-
-# ## #################################################################
-# ## Applicative target
-# ## #################################################################
-
-# set(DTKLINEARALGEBRASPARSE_TARGETS ${DTKLINEARALGEBRASPARSE_TARGETS} ${PROJECT_NAME})
-
-# ## #################################################################
-# ## Target export
-# ## #################################################################
-
-# export(TARGETS ${DTKLINEARALGEBRASPARSE_TARGETS} FILE "${CMAKE_BINARY_DIR}/${PROJECT_NAME}Depends.cmake")
-
-## ###################################################################
-## Exporting
-## ###################################################################
-
-# export(PACKAGE ${PROJECT_NAME})
-
-# configure_file(${CMAKE_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in
-#   "${CMAKE_BINARY_DIR}/${PROJECT_NAME}Config.cmake" @ONLY)
-# configure_file(${CMAKE_SOURCE_DIR}/cmake/${PROJECT_NAME}ConfigVersion.cmake.in
-#   "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake" @ONLY)
-
-# install(FILES
-#   "${CMAKE_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
-#   "${CMAKE_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
-#   DESTINATION cmake)
-
-# install(EXPORT dtkLinearAlgebraSparseDepends DESTINATION cmake)
 
 ## ###################################################################
 ## Beautifying
