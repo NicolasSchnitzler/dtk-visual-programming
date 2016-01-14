@@ -84,6 +84,12 @@ else(CMAKE_SIZEOF_VOID_P MATCHES 8)
   set(${PROJECT_NAME}_PLATFORM_32 1)
 endif(CMAKE_SIZEOF_VOID_P MATCHES 8)
 
+if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+  message(STATUS "Setting build type to 'RelWithDebInfo' as none was specified.")
+  set(CMAKE_BUILD_TYPE RelWithDebInfo CACHE STRING "Choose the type of build." FORCE)
+  set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
+endif()
+
 ## ###################################################################
 ## Test setup
 ## ###################################################################
@@ -94,8 +100,10 @@ enable_testing()
 ## Dependencies - external
 ## #################################################################
 
-find_package(Qt5Core REQUIRED)
-find_package(Qt5Widgets REQUIRED)
+find_package(Qt5 REQUIRED COMPONENTS
+  Core
+  Widgets
+  )
 
 ## #################################################################
 ## Dependencies - external

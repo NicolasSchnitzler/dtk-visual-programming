@@ -50,11 +50,7 @@ int main(int argc, char **argv)
 
     // dtkCorePluginManager::instance()->initialize();
     dtkLinearAlgebraSparse::pluginManager::initialize();
-
-    dtkGeometrySettings geo_settings;
-    geo_settings.beginGroup("geometry");
-    dtkGeometry::mesher::initialize(geo_settings.value("plugins").toString());
-    geo_settings.endGroup();
+    dtkGeometry::pluginManager::initialize();
 
 
     dtkVisualProgrammingMainWindow mainwindow;
