@@ -200,6 +200,13 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     layout->addWidget(d->monitoring_list);
     layout->addWidget(d->monitoring_view);
 
+    // /////////////////////////////////////////////////////////////////
+    //
+    // /////////////////////////////////////////////////////////////////
+
+    // Create a node, register it to the controller ..
+    // Create a node, register it to the controller ..
+
     // ///////////////////////////////////////////////////////
     // -- Actions
 
