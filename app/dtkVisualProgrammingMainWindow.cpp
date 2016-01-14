@@ -19,7 +19,6 @@
 #include <dtkComposer/dtkComposerNode.h>
 #include <dtkComposer/dtkComposerWidget.h>
 #include <dtkComposer/dtkComposerCompass.h>
-#include <dtkComposer/dtkComposerControls.h>
 #include <dtkComposer/dtkComposerEvaluator.h>
 #include <dtkComposer/dtkComposerFactory.h>
 #include <dtkComposer/dtkComposerNodeFactoryView.h>
@@ -142,8 +141,6 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
 
     QScopedPointer<dtkComposerNodeFactoryExtension> geo_ext(new dtkGeometryComposerFactoryExtension);
     d->composer->factory()->extend(geo_ext.data());
-
-    d->controls = NULL;
 
     d->editor = new dtkComposerSceneNodeEditor(this);
     d->editor->setScene(d->composer->scene());
@@ -367,12 +364,6 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     dtkScreenMenu *screen_menu = new dtkScreenMenu("Screen",this);
     menu_bar->addMenu(screen_menu);
 
-    QAction *showControlsAction = new QAction("Show controls", this);
-    showControlsAction->setShortcut(QKeySequence(Qt::ShiftModifier + Qt::ControlModifier + Qt::AltModifier + Qt::Key_C));
-
-    QMenu *window_menu = menu_bar->addMenu("Window");
-    window_menu->addAction(showControlsAction);
-
     QMenu *debug_menu = menu_bar->addMenu("Debug");
     debug_menu->addAction(run_action);
     debug_menu->addAction(step_action);
@@ -395,8 +386,6 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     connect(switchToDstrbAction, SIGNAL(triggered()), this, SLOT(switchToDstrb()));
     connect(switchToDebugAction, SIGNAL(triggered()), this, SLOT(switchToDebug()));
     connect(switchToViewAction, SIGNAL(triggered()), this, SLOT(switchToView()));
-
-    connect(showControlsAction, SIGNAL(triggered()), this, SLOT(showControls()));
 
     // connect(d->view_manager, SIGNAL(focused(dtkAbstratView *)), this, SLOT(onViewFocused(dtkAbstractView *)));
 
@@ -799,23 +788,6 @@ void dtkVisualProgrammingMainWindow::switchToMontr(void)
 
     d->graph->setVisible(false);
     d->log_view->setVisible(false);
-}
-
-void dtkVisualProgrammingMainWindow::showControls(void)
-{
-    if(!d->controls) {
-        d->controls = new dtkComposerControls(this);
-        d->controls->setScene(d->composer->scene());
-        d->controls->setWindowFlags(Qt::Dialog);
-        d->controls->setWindowTitle("Composer Controls");
-
-        if(!this->isFullScreen()) {
-            d->controls->resize(d->controls->size().width(), this->size().height());
-            d->controls->move(this->rect().topRight() + QPoint(10, 0));
-        }
-    }
-
-    d->controls->show();
 }
 
 void dtkVisualProgrammingMainWindow::closeEvent(QCloseEvent *event)

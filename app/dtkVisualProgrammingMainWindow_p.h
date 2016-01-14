@@ -23,7 +23,6 @@
 #include <QtWidgets>
 
 class dtkComposerWidget;
-class dtkComposerControls;
 class dtkComposerNodeFactoryView;
 class dtkComposerGraphView;
 class dtkComposerSceneModel;
@@ -68,7 +67,6 @@ public slots:
 
 public:
     dtkComposerWidget *composer;
-    dtkComposerControls *controls;
     dtkComposerNodeFactoryView *nodes;
     dtkComposerGraphView *graph;
     dtkComposerSceneModel *model;

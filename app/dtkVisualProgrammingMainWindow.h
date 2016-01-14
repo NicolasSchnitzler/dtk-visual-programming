@@ -56,9 +56,6 @@ protected slots:
     void switchToView(void);
 
 protected slots:
-    void showControls(void);
-
-protected slots:
     void onComposerNodeFlagged(dtkComposerSceneNode *);
 
 protected:
