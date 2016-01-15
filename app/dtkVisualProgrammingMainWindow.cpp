@@ -34,9 +34,16 @@
 #include <dtkComposer/dtkComposerViewManager.h>
 #include <dtkComposer/dtkComposerViewController.h>
 
+//to be removed
+#include <dtkComposer/dtkComposerNodeBoolean.h>
+#include <dtkComposer/dtkComposerNodeInteger.h>
+
+
 #include <dtkMonitoring/dtkMonitoringList.h>
 #include <dtkMonitoring/dtkMonitoringScene.h>
 #include <dtkMonitoring/dtkMonitoringView.h>
+#include <dtkMonitoring/dtkMonitoringModel.h>
+#include <dtkMonitoring/dtkMonitoringFactory.h>
 
 #include <dtkGuiSupport/dtkScreenMenu.h>
 #include <dtkGuiSupport/dtkRecentFilesMenu.h>
@@ -184,12 +191,19 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
 
     d->monitoring_widget = new QWidget(this);
     d->monitoring_widget->setVisible(false);
+    
+    d->monitoring_model=new dtkMonitoringModel();
 
     d->monitoring_list = new dtkMonitoringList(d->monitoring_widget);
     d->monitoring_list->setFixedWidth(300);
+    d->monitoring_list->setDragEnabled(true);
+    d->monitoring_list->setModel(d->monitoring_model);
+    
     d->monitoring_scene = new dtkMonitoringScene(d->monitoring_widget);
     d->monitoring_view = new dtkMonitoringView(d->monitoring_widget);
     d->monitoring_view->setScene(d->monitoring_scene);
+
+    dtkMonitoringFactory::instance()->initialize();
 
     QHBoxLayout *layout = new QHBoxLayout(d->monitoring_widget);
     layout->setSpacing(0);
@@ -204,6 +218,9 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     // Create a node, register it to the controller ..
     // Create a node, register it to the controller ..
 
+    dtkComposerNode* booleanNode=d->composer->factory()->create("boolean");
+    dtkMonitoringController::instance()->registerNode(booleanNode);
+    
     // ///////////////////////////////////////////////////////
     // -- Actions
 

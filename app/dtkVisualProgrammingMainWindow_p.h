@@ -33,6 +33,7 @@ class dtkComposerStackView;
 class dtkMonitoringList;
 class dtkMonitoringScene;
 class dtkMonitoringView;
+class dtkMonitoringModel;
 
 class dtkDistributor;
 
@@ -80,7 +81,7 @@ public:
     dtkMonitoringList *monitoring_list;
     dtkMonitoringScene *monitoring_scene;
     dtkMonitoringView *monitoring_view;
-
+    dtkMonitoringModel *monitoring_model;
 public:
     dtkDistributor *distributor;
 
