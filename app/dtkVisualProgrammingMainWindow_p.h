@@ -1,21 +1,16 @@
-/* dtkVisualProgrammingMainWindow_p.h ---
- *
- * Author: Julien Wintz
- * Copyright (C) 2008-2011 - Julien Wintz, Inria.
- * Created: Wed Feb  1 12:37:28 2012 (+0100)
- * Version: $Id: 82f3beb9fd4e7a25cbb10a39def9d298b1e35c92 $
- * Last-Updated: Tue Jun 25 10:04:05 2013 (+0200)
- *           By: Selim Kraria
- *     Update #: 154
- */
+// Version: $Id$
+//
+//
 
-/* Commentary:
- *
- */
+// Commentary:
+//
+//
 
-/* Change log:
- *
- */
+// Change Log:
+//
+//
+
+// Code:
 
 #pragma once
 
@@ -29,22 +24,18 @@ class dtkComposerSceneModel;
 class dtkComposerSceneNodeEditor;
 class dtkComposerSceneView;
 class dtkComposerStackView;
+class dtkComposerViewManager;
 
 class dtkMonitoringList;
 class dtkMonitoringScene;
 class dtkMonitoringView;
 class dtkMonitoringModel;
 
-class dtkDistributor;
-
 class dtkRecentFilesMenu;
 
 class dtkSplitter;
 
 class dtkWidgetsLogView;
-
-class dtkComposerViewManager;
-class dtkPlotViewSettings;
 
 class dtkVisualProgrammingMainWindow;
 
@@ -57,11 +48,6 @@ public:
 
 public:
     void setCurrentFile(const QString& file);
-
-#if defined(Q_OS_MAC) && (MAC_OS_X_VERSION_MAX_ALLOWED > MAC_OS_X_VERSION_10_6)
-    void enableFullScreenSupport(void);
-    void showFullScreen(void);
-#endif
 
 public slots:
     void setModified(bool modified);
@@ -76,18 +62,20 @@ public:
     dtkComposerStackView *stack;
 
 public:
-    QWidget *monitoring_widget;
-
     dtkMonitoringList *monitoring_list;
+    dtkMonitoringModel *monitoring_model;
     dtkMonitoringScene *monitoring_scene;
     dtkMonitoringView *monitoring_view;
-    dtkMonitoringModel *monitoring_model;
-public:
-    dtkDistributor *distributor;
 
 public:
     dtkComposerViewManager *view_manager;
-    dtkPlotViewSettings *plot_view_settings;
+
+public:
+    QWidget     *composer_widget;
+    QWidget   *monitoring_widget;
+    QWidget *distribution_widget;
+    QWidget        *debug_widget;
+    QWidget         *view_widget;
 
 public:
     dtkWidgetsLogView *log_view;
@@ -103,10 +91,12 @@ public:
     QAction *composition_insert_action;
     QAction *composition_quit_action;
 
+public:
     QMenu *edit_menu;
     QAction *undo_action;
     QAction *redo_action;
 
+public:
     dtkRecentFilesMenu *recent_compositions_menu;
 
 public:
@@ -123,10 +113,8 @@ public:
     QString current_composition;
 
 public:
-    int wl;
-    int wr;
-    int wg;
-
-public:
     dtkVisualProgrammingMainWindow *q;
 };
+
+//
+// dtkVisualProgrammingMainWindow_p.h ends here

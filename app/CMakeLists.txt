@@ -26,12 +26,6 @@ set(${PROJECT_NAME}_SOURCES
   dtkVisualProgrammingMainWindow.cpp
   main.cpp)
 
-if(APPLE)
-set(${PROJECT_NAME}_SOURCES
-  ${${PROJECT_NAME}_SOURCES}
-  dtkVisualProgrammingMainWindow.mm)
-endif(APPLE)
-
 set(${PROJECT_NAME}_RESOURCES
   dtkVisualProgramming.qrc)
 
@@ -52,10 +46,6 @@ add_executable(${PROJECT_NAME} MACOSX_BUNDLE WIN32
   ${${PROJECT_NAME}_HEADERS})
 
 target_link_libraries(${PROJECT_NAME}
-  dtkLinearAlgebraSparse
-  dtkGeometry)
-
-target_link_libraries(${PROJECT_NAME}
   dtkLog
   dtkCore
   dtkComposer
@@ -63,14 +53,13 @@ target_link_libraries(${PROJECT_NAME}
   dtkGuiSupport
   dtkWidgets)
 
+target_link_libraries(${PROJECT_NAME}
+  dtkLinearAlgebraSparse
+  dtkGeometry)
+
 if(DTK_BUILD_SUPPORT_PLOT)
   target_link_libraries(${PROJECT_NAME} dtkPlotSupport)
 endif(DTK_BUILD_SUPPORT_PLOT)
-
-if(APPLE)
-target_link_libraries(${PROJECT_NAME}
-  "-framework Cocoa")
-endif(APPLE)
 
 qt5_use_modules(${PROJECT_NAME} Concurrent)
 qt5_use_modules(${PROJECT_NAME} Core)
@@ -80,13 +69,6 @@ qt5_use_modules(${PROJECT_NAME} Quick)
 qt5_use_modules(${PROJECT_NAME} Network)
 qt5_use_modules(${PROJECT_NAME} Widgets)
 qt5_use_modules(${PROJECT_NAME} Xml)
-
-## #################################################################
-## Source file layout in development environments like Visual Studio
-## #################################################################
-
-SOURCE_GROUP("Header Files" REGULAR_EXPRESSION .*\\.h\$)
-SOURCE_GROUP("Generated Files" FILES ${${PROJECT_NAME}_SOURCES_MOC})
 
 ## #################################################################
 ## Installation

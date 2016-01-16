@@ -1,3 +1,5 @@
+## Version: $Id$
+##
 ######################################################################
 ##
 ### Commentary:
@@ -15,10 +17,11 @@ cmake_minimum_required(VERSION 2.8.12)
 ######################################################################
 
 if(${CMAKE_MAJOR_VERSION} GREATER 2)
+  cmake_policy(SET CMP0043 OLD)
   cmake_policy(SET CMP0048 OLD)
 endif(${CMAKE_MAJOR_VERSION} GREATER 2)
 
-##################################################################
+######################################################################
 
 project(dtkVisualProgramming)
 
@@ -40,55 +43,37 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 
-## #################################################################
+## ####################################################################
 ## Install prefix
-## #################################################################
+## ####################################################################
 
 if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
   set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/install" CACHE PATH "${PROJECT_NAME} install prefix" FORCE)
 endif(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
 
-## #################################################################
+## ####################################################################
 ## Generate compilation database
-## #################################################################
+## ####################################################################
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS "ON")
 
-## ###################################################################
+## ####################################################################
 ## Build setup
-## ###################################################################
+## ####################################################################
 
-set(CMAKE_AUTOMOC ON)
+include(CheckCXXCompilerFlag)
+check_cxx_compiler_flag("-std=c++11" COMPILER_SUPPORTS_CXX11)
+check_cxx_compiler_flag("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
+if(COMPILER_SUPPORTS_CXX11)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wno-unknown-pragmas")
+elseif(COMPILER_SUPPORTS_CXX0X)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -Wno-unknown-pragmas")
+else()
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unknown-pragmas")
+  message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support.")
+endif()
+
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
-
-include(GNUInstallDirs)
-include(GenerateExportHeader)
-
-if(APPLE)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -I/usr/lib/c++/v1")
-endif(APPLE)
-
-if(NOT APPLE AND NOT MSVC)
-  include(CheckCXXCompilerFlag)
-  CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-  CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
-  if(COMPILER_SUPPORTS_CXX11)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wno-unknown-pragmas")
-  elseif(COMPILER_SUPPORTS_CXX0X)
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -Wno-unknown-pragmas")
-  else()
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unknown-pragmas")
-    message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
-  endif()
-else(NOT APPLE AND NOT MSVC)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
-endif(NOT APPLE AND NOT MSVC)
-
-if(CMAKE_SIZEOF_VOID_P MATCHES 8)
-  set(${PROJECT_NAME}_PLATFORM_64 1)
-else(CMAKE_SIZEOF_VOID_P MATCHES 8)
-  set(${PROJECT_NAME}_PLATFORM_32 1)
-endif(CMAKE_SIZEOF_VOID_P MATCHES 8)
 
 ## ###################################################################
 ## Test setup
@@ -96,12 +81,14 @@ endif(CMAKE_SIZEOF_VOID_P MATCHES 8)
 
 enable_testing()
 
-## #################################################################
+## ##################################################################
 ## Dependencies - external
-## #################################################################
+## ##################################################################
 
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Widgets REQUIRED)
+
+set(CMAKE_AUTOMOC ON)
 
 ## #################################################################
 ## Dependencies - external
@@ -122,15 +109,15 @@ include_directories(${dtkGeometry_INCLUDE_DIRS})
 
 include_directories(${CMAKE_BINARY_DIR})
 
-## ###################################################################
+## ################################################################
 ## Input
-## ###################################################################
+## ################################################################
 
 add_subdirectory(app)
 
-## ###################################################################
+## ###############################################################
 ## Beautifying
-## ###################################################################
+## ###############################################################
 
 mark_as_advanced(${PROJECT_NAME}_VERSION_MAJOR)
 mark_as_advanced(${PROJECT_NAME}_VERSION_MINOR)
@@ -156,9 +143,9 @@ mark_as_advanced(CMAKE_OSX_ARCHITECTURES)
 mark_as_advanced(CMAKE_OSX_DEPLOYMENT_TARGET)
 mark_as_advanced(CMAKE_OSX_SYSROOT)
 
-## ###################################################################
+## #################################################################
 ## Packaging
-## ###################################################################
+## #################################################################
 
 include(InstallRequiredSystemLibraries)
 
