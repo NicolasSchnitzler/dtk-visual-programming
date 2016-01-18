@@ -209,11 +209,14 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     d->monitoring_list->setDragEnabled(true);
     d->monitoring_list->setModel(d->monitoring_model);
 
+    d->monitoring_factory = new dtkMonitoringFactory;
+    d->monitoring_factory->initialize();
+
     d->monitoring_scene = new dtkMonitoringScene(this);
+    d->monitoring_scene->setFactory(d->monitoring_factory);
+
     d->monitoring_view = new dtkMonitoringView(this);
     d->monitoring_view->setScene(d->monitoring_scene);
-
-    dtkMonitoringFactory::instance()->initialize();
 
     QHBoxLayout *monitoring_layout = new QHBoxLayout;
     monitoring_layout->setSpacing(0);
@@ -231,7 +234,6 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     // Create nodes
 
     dtkComposerNode *booleanNode = d->composer->factory()->create("boolean");
-
     // Register nodes
 
     dtkMonitoringController::instance()->registerNode(booleanNode);

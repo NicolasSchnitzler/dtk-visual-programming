@@ -28,6 +28,7 @@ class dtkComposerViewManager;
 
 class dtkMonitoringList;
 class dtkMonitoringScene;
+class dtkMonitoringFactory;
 class dtkMonitoringView;
 class dtkMonitoringModel;
 
@@ -64,6 +65,7 @@ public:
 public:
     dtkMonitoringList *monitoring_list;
     dtkMonitoringModel *monitoring_model;
+    dtkMonitoringFactory *monitoring_factory;
     dtkMonitoringScene *monitoring_scene;
     dtkMonitoringView *monitoring_view;
 
