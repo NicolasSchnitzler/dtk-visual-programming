@@ -36,6 +36,7 @@
 #include <dtkComposer/dtkComposerNodeBoolean.h>
 #include <dtkComposer/dtkComposerNodeInteger.h>
 
+#include <dtkMonitoring/dtkMonitoringController.h>
 #include <dtkMonitoring/dtkMonitoringList.h>
 #include <dtkMonitoring/dtkMonitoringScene.h>
 #include <dtkMonitoring/dtkMonitoringView.h>
@@ -226,6 +227,8 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
 
     d->monitoring_widget = new QWidget(this);
     d->monitoring_widget->setLayout(monitoring_layout);
+
+    connect(d->composer->scene(), SIGNAL(monitoringChanged(dtkComposerNode *, bool)), dtkMonitoringController::instance(), SLOT(onMonitoringChanged(dtkComposerNode *, bool)));
 
 // /////////////////////////////////////////////////////////////////
 // Monitoring setup                                        TEMPORARY
