@@ -231,17 +231,6 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     connect(d->composer->scene(), SIGNAL(monitoringChanged(dtkComposerNode *, bool)), dtkMonitoringController::instance(), SLOT(onMonitoringChanged(dtkComposerNode *, bool)));
 
 // /////////////////////////////////////////////////////////////////
-// Monitoring setup                                        TEMPORARY
-// /////////////////////////////////////////////////////////////////
-
-    // Create nodes
-
-    dtkComposerNode *booleanNode = d->composer->factory()->create("boolean");
-    // Register nodes
-
-    dtkMonitoringController::instance()->registerNode(booleanNode);
-
-// /////////////////////////////////////////////////////////////////
 // Distribution widget
 // /////////////////////////////////////////////////////////////////
 
