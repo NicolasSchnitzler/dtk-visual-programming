@@ -209,6 +209,7 @@ dtkVisualProgrammingMainWindow::dtkVisualProgrammingMainWindow(QWidget *parent) 
     d->monitoring_list->setFixedWidth(300);
     d->monitoring_list->setDragEnabled(true);
     d->monitoring_list->setModel(d->monitoring_model);
+    dtkMonitoringController::instance()->registerModel(d->monitoring_model);
 
     d->monitoring_factory = new dtkMonitoringFactory;
     d->monitoring_factory->initialize();
